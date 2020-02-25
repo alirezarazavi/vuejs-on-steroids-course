@@ -30,6 +30,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/core-components.js',
+    '~plugins/date-filter.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -40,7 +42,13 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+
+  axios: {
+    baseURL: process.env.BASE_URL || 'https://nuxt-blog-20825.firebaseio.com',
+    credentials: false
+  },
   /*
   ** Build configuration
   */
@@ -50,5 +58,14 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-20825.firebaseio.com'
+  },
+
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   }
 }
